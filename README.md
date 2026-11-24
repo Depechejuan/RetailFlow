@@ -1,2 +1,48 @@
 # RetailFlow
-Prueba Técnica AI Agents para Speed Paradigm 
+
+Gestión inteligente de inventario multi-tienda para la prueba técnica de Speed Paradigm.
+
+## Estado
+
+La aplicación funciona en `demo` con datos reproducibles y está preparada para conectar
+Supabase Auth y PostgreSQL cuando se configure un proyecto. No se incluyen credenciales.
+
+## Stack
+
+- Next.js App Router + TypeScript estricto
+- Tailwind CSS 4 + componentes propios inspirados en shadcn/ui
+- Supabase Auth, PostgreSQL y RLS (pendiente de configurar)
+- Vitest, React Testing Library y Playwright
+- Vercel
+
+## Desarrollo local
+
+```bash
+npm install
+npm run dev
+```
+
+Abre <http://localhost:3000>. El modo demo no requiere variables de entorno.
+
+## Variables de entorno
+
+Copia `.env.example` a `.env.local`. Para conectar Supabase será necesario crear un
+proyecto en <https://supabase.com/dashboard>, obtener las claves desde `Settings > API
+Keys` y confirmar su configuración antes de ejecutar migraciones.
+
+Las claves secretas nunca deben llegar al navegador ni subirse a Git.
+
+## Comprobaciones
+
+```bash
+npm run lint
+npm run typecheck
+npm run test
+npm run build
+```
+
+## Agentes
+
+- `AGENTS.md`: reglas del Orchestrator y arquitectura.
+- `docs/agents/DEVELOP.md`: directrices de implementación.
+- `docs/agents/TESTING.md`: estrategia de validación.
