@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:e2e": "cross-env RETAILFLOW_DEMO_E2E=1 next dev --port 3100",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
@@ -29,6 +30,7 @@
     "@types/node": "22.15.3",
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",
+    "cross-env": "^10.1.0",
     "eslint": "9.39.1",
     "eslint-config-next": "16.4.6",
     "jsdom": "27.0.0",
