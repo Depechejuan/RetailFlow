@@ -13,5 +13,9 @@ export function getPendingIncidents(context: AssistantContext) {
 
 export function suggestRedistribution(context: AssistantContext) {
   const candidates = getLowStockProducts(context);
-  return candidates.slice(0, 3).map((item) => ({ product: item.name, from: "Madrid Centro", to: stores.find((store) => store.id === item.storeId)?.name ?? "Tienda asignada", quantity: Math.max(1, item.minStock - item.stock) }));
+  return candidates.flatMap((item) => {
+    const donor = inventory.find((candidate) => candidate.id === item.id && candidate.storeId !== item.storeId && context.allowedStoreIds.includes(candidate.storeId) && candidate.health === "healthy" && candidate.stock > candidate.minStock);
+    if (!donor) return [];
+    return [{ product: item.name, from: stores.find((store) => store.id === donor.storeId)?.name ?? "Tienda origen", to: stores.find((store) => store.id === item.storeId)?.name ?? "Tienda destino", quantity: Math.min(donor.stock - donor.minStock, Math.max(1, item.minStock - item.stock)) }];
+  }).slice(0, 3);
 }

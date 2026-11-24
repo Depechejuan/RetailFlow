@@ -38,17 +38,17 @@ export const products: Product[] = productNames.map(([name, categoryId], index) 
   status: "active",
 }));
 
-export const inventory: InventoryItem[] = products.map((product, index) => {
-  const stock = 4 + ((index * 13) % 44);
+export const inventory: InventoryItem[] = stores.flatMap((store, storeIndex) => products.map((product, productIndex) => {
+  const stock = 3 + ((productIndex * 13 + storeIndex * 17) % 44);
   const health = stock <= product.minStock / 2 ? "critical" : stock <= product.minStock ? "low" : "healthy";
   return {
     ...product,
     stock,
-    storeId: stores[index % stores.length].id,
-    lastMovement: index % 7 === 0 ? "2026-07-19" : `2026-11-${String(24 - (index % 18)).padStart(2, "0")}`,
+    storeId: store.id,
+    lastMovement: productIndex % 7 === 0 ? "2026-07-19" : `2026-11-${String(24 - ((productIndex + storeIndex) % 18)).padStart(2, "0")}`,
     health,
   };
-});
+}));
 
 export const movements: Movement[] = [
   { id: "mov-001", type: "transfer", productId: "product-7", productName: "Cargador GaN 65W", quantity: 18, sourceStore: "Madrid Centro", destinationStore: "Valencia Ruzafa", occurredAt: "2026-11-24T08:42:00", actor: "Laura Martín", note: "Reposición por demanda" },

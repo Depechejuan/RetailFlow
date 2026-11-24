@@ -1,8 +1,8 @@
-import { incidents, inventory, movements } from "@/lib/demo-data";
+import { incidents, inventory, movements, products } from "@/lib/demo-data";
 import { inventoryValue } from "@/lib/inventory";
 
 export const dashboardStats = {
-  products: inventory.length,
+  products: products.length,
   totalStock: inventory.reduce((total, item) => total + item.stock, 0),
   inventoryValue: inventoryValue(inventory),
   lowStock: inventory.filter((item) => item.health !== "healthy").length,

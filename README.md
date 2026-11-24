@@ -32,6 +32,21 @@ Keys` y confirmar su configuración antes de ejecutar migraciones.
 
 Las claves secretas nunca deben llegar al navegador ni subirse a Git.
 
+## Supabase: siguiente paso
+
+La aplicación no se conecta a Supabase automáticamente. Cuando exista un proyecto y
+las variables estén configuradas, aplica las migraciones y el seed desde el SQL Editor
+o con Supabase CLI:
+
+```bash
+supabase db push
+supabase db reset
+```
+
+Después crea un usuario en Auth y vuelve a ejecutar `supabase/seed/seed.sql`; el seed
+asocia el primer perfil a la organización demo y asigna sus tres tiendas. Hasta ese
+momento, la aplicación conserva el modo demo de lectura.
+
 ## Comprobaciones
 
 ```bash
