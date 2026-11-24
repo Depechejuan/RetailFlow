@@ -25,7 +25,7 @@ insert into public.products (organization_id, sku, name, category_id, cost_price
 select '00000000-0000-0000-0000-000000000001',
        'RF-' || lpad(n::text, 3, '0'),
        'Producto Demo ' || lpad(n::text, 2, '0'),
-       '00000000-0000-0000-0001-00000000000' || (((n - 1) % 5) + 1),
+       ('00000000-0000-0000-0001-00000000000' || (((n - 1) % 5) + 1)::text)::uuid,
        18 + ((n - 1) % 8) * 11,
        39 + ((n - 1) % 8) * 19,
        8 + ((n - 1) % 5) * 3
