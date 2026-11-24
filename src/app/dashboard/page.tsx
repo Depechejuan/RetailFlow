@@ -6,6 +6,8 @@ import { loadDashboard } from "@/lib/repositories/dashboard";
 import { categoryName } from "@/lib/demo-data";
 import { euros } from "@/lib/format";
 
+export const dynamic = "force-dynamic";
+
 const movementLabels = { receipt: "Entrada", shipment: "Salida", transfer: "Traspaso", adjustment: "Ajuste" };
 
 export default async function DashboardPage() {

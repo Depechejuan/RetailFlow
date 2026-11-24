@@ -5,6 +5,8 @@ import { Status } from "@/components/ui";
 import { loadIncidents } from "@/lib/repositories/incidents";
 import { dateLabel } from "@/lib/format";
 
+export const dynamic = "force-dynamic";
+
 const statusLabel = { open: "Abierta", in_progress: "En curso", resolved: "Resuelta" };
 const priorityLabel = { low: "Baja", medium: "Media", high: "Alta", critical: "Crítica" };
 

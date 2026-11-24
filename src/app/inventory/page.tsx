@@ -4,6 +4,8 @@ import { InventoryTable } from "@/components/inventory-table";
 import { products, stores } from "@/lib/demo-data";
 import { loadInventory } from "@/lib/repositories/inventory";
 
+export const dynamic = "force-dynamic";
+
 export default async function InventoryPage() {
   const inventory = await loadInventory();
   return <AppShell active="/inventory"><PageHeader eyebrow={`Inventario · ${products.length} referencias · ${stores.length} tiendas`} title="Inventario" description="Consulta el estado de cada referencia por establecimiento y detecta las que necesitan atención." action={<div className="flex gap-2"><button className="inline-flex items-center gap-2 rounded-xl border border-[#dfe8e3] bg-white px-4 py-3 text-sm font-bold text-[#506168] hover:bg-[#f8faf8]"><Download size={16} /> Exportar</button><button className="inline-flex items-center gap-2 rounded-xl bg-[#10212b] px-4 py-3 text-sm font-bold text-white hover:bg-[#1c3b47]"><Plus size={16} /> Nuevo producto</button></div>} /><DemoNotice /><div className="mb-5 grid gap-3 sm:grid-cols-3">{stores.map((store, index) => <div key={store.id} className="panel rounded-2xl p-4"><p className="text-xs font-bold text-[#718187]">{store.name}</p><div className="mt-3 flex items-end justify-between"><span className="number-display text-2xl font-black">{inventory.filter((item) => item.storeId === store.id).reduce((total, item) => total + item.stock, 0)}</span><span className="text-xs font-bold text-[#557b23]">{["98%", "94%", "96%"][index]} saludable</span></div><div className="mt-3 h-1.5 rounded-full bg-[#eef2f0]"><div className="h-full rounded-full bg-[#b6e36b]" style={{ width: `${[98, 94, 96][index]}%` }} /></div></div>)}</div><InventoryTable items={inventory} /></AppShell>;

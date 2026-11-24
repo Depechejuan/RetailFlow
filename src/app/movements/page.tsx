@@ -5,6 +5,8 @@ import { MovementIcon, Status } from "@/components/ui";
 import { loadMovements } from "@/lib/repositories/movements";
 import { dateLabel } from "@/lib/format";
 
+export const dynamic = "force-dynamic";
+
 const labels = { receipt: "Entrada", shipment: "Salida", transfer: "Traspaso", adjustment: "Ajuste" };
 const tones = { receipt: "success", shipment: "danger", transfer: "info", adjustment: "warning" } as const;
 
