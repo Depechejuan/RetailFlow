@@ -32,6 +32,9 @@ Keys` y confirmar su configuración antes de ejecutar migraciones.
 
 Las claves secretas nunca deben llegar al navegador ni subirse a Git.
 
+`SUPABASE_JWKS_URL` se conserva para verificaciones JWT server-side futuras; la sesión
+actual se valida mediante Supabase SSR.
+
 ## Supabase: siguiente paso
 
 La aplicación no se conecta a Supabase automáticamente. Cuando exista un proyecto y
